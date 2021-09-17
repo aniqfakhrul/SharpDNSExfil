@@ -128,10 +128,10 @@ def write_file(b64_data):
             xor_key = decrypt(enc_xorkey).decode('utf-8')
         return
     
-    #if b"XOR Key:::" in plain:
-    #    xor_key = plain.decode('utf-8').split(":::")[1]
-    #    print(f"XOR Key is {xor_key}")
-    #    return
+    if b"XOR Key:::" in plain:
+        xor_key = plain.decode('utf-8').split(":::")[1]
+        print(f"XOR Key is {xor_key}")
+        return
 
     if b"File Name:::" in plain:
         file_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10)) + "_" + plain.decode('utf-8').split(":::")[1]
