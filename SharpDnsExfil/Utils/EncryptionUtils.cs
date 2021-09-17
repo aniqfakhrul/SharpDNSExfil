@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,11 +10,26 @@ namespace SharpDnsExfil.Utils
 {
     class EncryptionUtils
     {
+
         private static Random random = new Random();
 
-        public static byte[] GetRandomKey(int MAX_SIZE)
+        public static byte[] xorEncDec(byte[] input, string theKeystring)
         {
-            byte[] key = new byte[MAX_SIZE];
+
+            byte[] theKey = Encoding.UTF8.GetBytes(theKeystring);
+            byte[] mixed = new byte[input.Length];
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                int length = i % theKey.Length;
+                mixed[i] = (byte)(input[i] ^ theKey[length]);
+            }
+            return mixed;
+        }
+
+        public static byte[] GetRandomKey()
+        {
+            byte[] key = new byte[32];
 
             for (int i = 0; i < 32; i++)
             {

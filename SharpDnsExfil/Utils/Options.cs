@@ -21,6 +21,9 @@ namespace SharpDnsExfil.Utils
 
         [Option('d', "domain", Required = false, HelpText = "Custom domain name [ Default = \"fakedomain.my\" ]")]
         public string Domain { get; set; } = "fakedomain.my";
-        
+
+        [Option('e', "encrypt", Required = false, HelpText = "Encrypt key [OPSEC]")]
+        public bool Encrypt { get; set; }
+
     }
 }

