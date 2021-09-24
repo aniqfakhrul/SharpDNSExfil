@@ -15,5 +15,8 @@ mono_crash.*
 
 [Bb]in/
 [Oo]bj/
-SharpDnsExfil/[Bb]in/
-SharpDnsExfil/[Oo]bj/
+SharpDnsExfil/bin/
+SharpDnsExfil/obj/
+
+bin/
+obj/
