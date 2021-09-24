@@ -8,3 +8,6 @@ C:\Users\ch4rm\source\repos\SharpDnsExfil\SharpDnsExfil\obj\Release\SharpDnsExfi
 C:\Users\ch4rm\source\repos\SharpDnsExfil\SharpDnsExfil\obj\Release\SharpDnsExfil.csproj.CopyComplete
 C:\Users\ch4rm\source\repos\SharpDnsExfil\SharpDnsExfil\obj\Release\SharpDnsExfil.exe
 C:\Users\ch4rm\source\repos\SharpDnsExfil\SharpDnsExfil\obj\Release\SharpDnsExfil.pdb
+C:\Users\ch4rm\source\repos\SharpDnsExfil\SharpDnsExfil\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\Users\ch4rm\source\repos\SharpDnsExfil\SharpDnsExfil\bin\Release\ICSharpCode.SharpZipLib.pdb
+C:\Users\ch4rm\source\repos\SharpDnsExfil\SharpDnsExfil\bin\Release\ICSharpCode.SharpZipLib.xml

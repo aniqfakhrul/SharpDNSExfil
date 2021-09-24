@@ -74,5 +74,26 @@ namespace SharpDnsExfil.Utils
                 }
             }
         }
+
+        public IEnumerable<byte[]> ReadStreamChunks(Stream fs)
+        {
+            const int chunkSize = 45;
+            int bytesRead;
+            var buffer = new byte[chunkSize];
+
+            while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                if (bytesRead >= buffer.Length)
+                {
+                    yield return buffer;
+                }
+                else
+                {
+                    var truncatedBuffer = new byte[bytesRead];
+                    Array.Copy(buffer, truncatedBuffer, truncatedBuffer.Length);
+                    yield return truncatedBuffer;
+                }
+            }
+        }
     }
 }

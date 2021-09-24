@@ -1,3 +1,19 @@
 .vs
-SharpDnsExfil/[Bb]in
-SharpDnsExfil/[Oo]bj
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Mono auto generated files
+mono_crash.*
+
+[Bb]in/
+[Oo]bj/
+SharpDnsExfil/[Bb]in/
+SharpDnsExfil/[Oo]bj/
